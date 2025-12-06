@@ -1,0 +1,168 @@
+/* Dark mode theme override 
+JavaScript will make this override my default theme.
+Organization:
+    - General stuff
+    - Gallery
+    - Buttons
+    - Inputs and text
+    - Charts and graphs
+    - Media Query
+    - Quick Stats
+    - Weather
+*/
+
+/*
+December 4, 2025
+More Changes:
+ - Consolidated selectors
+ - Cleaned up the button classes
+*/
+
+body {
+    background: linear-gradient(160deg, #0d1117, #1f2937);
+    color: #f2f2f2;
+}
+
+
+h1, h2, h3 {
+  background-color: #0052cc;
+  color: #ffffff;
+  text-shadow: none;
+  border-radius: 5px;
+}
+
+
+p, .floating-box, .box, .contact-box, .about-box, .stat-card, .gallery-item, .quick-stats, .stats-chart-container, .course-results {
+  background-color: #1d1f24;   
+  color: #e7eaf0;               
+  box-shadow: 0 2px 10px rgba(0,0,0,.6);
+  border: 1px solid rgba(255,255,255,.06); 
+}
+
+ p {
+  background-color: transparent;
+}
+
+/* Gallery caption text */
+.gallery-item figcaption { color: #cfd6e4; }
+
+/* Buttons on dark */
+.btn, .button-container .btn {
+  background-color: #000000;
+  color: #fff;
+  border-radius: 3px;
+  background-color: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  text-decoration: none;
+}
+
+.btn:hover, button.btn:hover, input.btn:hover{
+  filter: brightness(1.05);
+  background-color: #3da6ff;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.6);
+}
+
+.floating-box, .contact-box, .about-box, .stats-chart-container, .gallery-item {
+  box-shadow: 0 1px 6px rgba(0,0,0,0.45);
+}
+
+
+/* Links on dark */
+a { color: #7fb3ff; }
+a:hover { text-decoration: underline; }
+
+/* INput and text areas */
+.contact-form input,
+.contact-form textarea,
+.log-form input {
+  background: #111317;
+  color: #e7eaf0;
+  border: 1px solid rgba(255,255,255,.12);
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder,
+.log-form input::placeholder { color: #9aa3b2; }
+
+/* The labels and charts dark mode */
+.bar { background: #2e7cf7; }
+.bar span { color: #cfd6e4; }
+
+/* Dim the green background a little bit */
+body::before {
+  filter: blur(5px) brightness(.5); 
+}
+
+/* Blue stripe*/
+.header-text { text-shadow: none; }
+
+#stats h2, #contact h2, #gallery h2 { color: #ffffff; }
+
+@media (max-width: 600px) {
+  /* Makes headers smaller */
+  h1, h2 {
+    font-size: 28px;
+  }
+
+  /* add some padding */
+  p {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  /* Reduce gap */
+  .flex-container, .container, .floating-box {
+    margin: 15px auto;
+    padding: 12px;
+  }
+
+  /* Make buttons a little easier to click on or tap */
+  .btn {
+    font-size: 15px;
+    padding: 12px 18px;
+  }
+}
+
+/* Make the name area dark as well*/
+.header-text {
+  background-color: #1d1f24;
+  color: #e7eaf0;
+  text-shadow: none;
+}
+
+/* better color  */
+.flex-text p {
+  background-color: transparent;
+}
+
+/* Quick Stats panel */
+.quick-stats {
+  background-color: #1d1f24 !important;
+  color: #e7eaf0;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
+.quick-stats p {
+  background-color: transparent; /* overrides global p { background:white } */
+}
+
+/* Weather ssection */
+
+.weather-container {
+  background-color: #1d1f24 !important;
+  color: #e7eaf0;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
+
+.weather-container p, .weather-text {
+  background-color: transparent;
+}
+
+.weather-container h1, .weather-container h2, .weather-container h3 {
+  background: none !important;
+  color: #ffffff;
+  text-shadow: none;
+}
+
+

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<!--December 5, 2025
+ - Some restructuring and organizing.
+ - Moved all the separate HTML pages into one file (this one).
+ - Linked my three JS files.
+ - Moved the navigation buttons to top of page.
+-->
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+  <title>Golf Tracker</title>
+  <link rel="stylesheet" href="css/css.css">
+  <link rel="icon" type="image/x-icon" href="css/Bjorn-Gray-profile-picture.jpg">
+</head>
+
+<body>
+<main>
+  <div class="floating-box">
+  <div class="button-container">
+    <a href="#" class="btn" data-nav="home">Home</a>
+    <a href="#" class="btn" data-nav="log-round">Log a Round</a>
+    <a href="#" class="btn" data-nav="stats">Stats</a>
+    <a href="#" class="btn" data-nav="find-course">Find a course</a>
+    <a href="#" class="btn" data-nav="gallery">Photo Gallery</a>
+    <a href="https://youthoncourse.org" target="_blank" class="btn">Youth on Course</a>
+    <a href="#" class="btn" data-nav="contact">About/Contact</a>
+    <a href="#" class="btn" data-nav="log-visit">Visitor Registration</a>
+    </div>
+    </div>
+  <!--Home section-->
+  <section data-section="home">  
+    <div class="floating-box">
+
+      <div class="flex-container">
+        <img src="img/golf-ball-tee.jpg" alt="Golf Ball" class="flex-image">
+        
+        <div class="flex-text">
+          <h1>Track your game</h1>
+          <h1>Lower your scores</h1>
+          <p>By Bjorn Gray</p>
+        </div>
+      </div>
+
+
+
+      <hr>
+
+      <div class="button-stats-container">
+        <div class="quick-stats">
+          <h2>Quick Stats</h2>
+          <p><strong>Avg Score:</strong> 75</p>
+          <p><strong>Fairways:</strong> 75%</p>
+          <p><strong>Putts Avg:</strong> 34</p>
+        </div>
+      </div>
+
+      <div class="video-container">
+        <iframe width="1840" height="1000"
+          src="https://www.youtube.com/embed/gLeW6MNoB4U"
+          title="1 Pro vs 5 Average Golfers (Not Even Close)"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
+      </div>
+
+      <aside class="weather-container"> 
+        <h2>Weather Warning</h2>
+        <div class="weather-text">
+          Snowstorms in the area, book earlier tee times...
+        </div>
+        <a href="https://weather.com/weather/today/l/4f9c2cccc24c9501d3ec21022cc060ea99dc40a0bca3c62398d61f6be6620f8c"
+           target="_blank" class="btn">
+          Weather in Orem
+        </a>
+      </aside>
+
+    </div> <!--floating-box-->
+  </section>
+
+  <!-- Log a round -->
+  <section data-section="log-round" style="display:none">
+    <div class="floating-box">
+      <h2>Log a Round</h2>
+      <div class="log-flex">
+        
+        <form class="log-form">
+          <label>
+            Date:
+            <input type="date" name="date" required>
+          </label>
+
+          <label>
+            Course:
+            <input type="text" name="course" placeholder="e.g. Sleepy Ridge" required>
+          </label>
+
+          <label>
+            Score:
+            <input type="number" name="score" placeholder="e.g. 75" required>
+          </label>
+
+          <label>
+            Fairways Hit (%):
+            <input type="number" name="fairways" placeholder="e.g. 75" min="0" max="100">
+          </label>
+
+          <label>
+            Putts:
+            <input type="number" name="putts" placeholder="e.g. 32">
+          </label>
+
+          <button type="submit" class="btn">Save Round</button>
+        </form>
+
+        <div class="log-image">
+          <img src="img/sleepy-ridge.jpg" alt="Sleepy Ridge Clubhouse">
+        </div>
+
+      </div> <!--.log-flex-->
+    </div>   <!--.floating-box-->
+  </section>
+
+  <!-- later: stats, find-course, gallery, contact, log-visit sections go here -->
+  <!--Stats-->
+
+  <section data-section="stats" style="display:none">
+    <section id="stats">
+      <h2>My Stats</h2>
+
+
+      <div class="stats-cards">
+        <div class="stat-card">
+          <h3>Average Score</h3>
+          <p>75</p>
+        </div>
+        <div class="stat-card">
+          <h3>Fairways Hit</h3>
+          <p>75%</p>
+       </div>
+        <div class="stat-card">
+          <h3>Average Putts</h3>
+          <p>34</p>
+        </div>
+        <div class="stat-card">
+          <h3>GIR</h3>
+          <p>66%</p>
+        </div>
+      </div>
+
+      <p>
+        More stats will be added as you save rounds...
+      </p>
+  
+      <div class="stats-chart-container">
+      <div class="stats-chart">
+        <h3>Recent Rounds</h3>
+        <div class="chart-bars">
+          <div class="bar" style="height: 65%"><span>74</span></div>
+          <div class="bar" style="height: 70%"><span>75</span></div>
+          <div class="bar" style="height: 55%"><span>72</span></div>
+          <div class="bar" style="height: 80%"><span>78</span></div>
+          <div class="bar" style="height: 60%"><span>73</span></div>
+        </div>
+      </div>
+      </div>
+    </section>
+  </section>
+
+  <!--Find a course-->
+  <section data-section="find-course" style="display:none">
+    <section id="courses">
+      <h2>Find a Course</h2>
+
+  
+      <form class="course-search">
+        <input type="text" placeholder="Search by city or course name..." required>
+        <button type="submit" class="btn">Search</button>
+      </form>
+
+    <!-- this is pretty cool lol-->
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps?q=Sleepy+Ridge+Golf+Course&output=embed"
+          width="100%"
+          height="400"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <div class="course-results">
+        <p>Popular nearby courses will show up here.</p>
+      </div>
+    </section>
+  </section>
+
+  <!--Gallery-->
+  <section data-section="gallery" style="display:none">
+    <section id="gallery">
+      <h2>Photo Gallery</h2>
+
+      <div class="gallery-container">
+        <figure class="gallery-item">
+          <img src="img/sleepy-ridge.jpg" alt="Sleepy Ridge Course">
+          <figcaption>Sleepy Ridge</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="img/red rock golf trail.jpg" alt="Red Rock Golf Trail">
+          <figcaption>Red Rock Golf Trail</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="img/riverside golf course.jpg" alt="Riverside green">
+          <figcaption>Riverside Country Club</figcaption>
+       </figure>
+
+        <figure class="gallery-item">
+          <img src="img/timp-golf-course.jpg" alt="Timp Golf Course">
+          <figcaption>Pond at Timpanogos Golf Course</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="img/sunset-fox-hollow.webp" alt="Fox Hollow">
+          <figcaption>Sunset at Fox Hollow</figcaption>
+        </figure>
+      </div>
+    </section>
+  </section>
+
+  <!--About/Contact-->
+  <section data-section="contact" style="display:none">
+    <section id="contact">
+      <h2>About / Contact</h2>
+
+      <div class="contact-flex">
+    
+        <div class="about-box">
+          <h3>About Golf Tracker / Contact</h3>
+          <p>
+            Golf Tracker is a simple tool to help you log your rounds, see your stats, and
+            find local courses. This was made by me, <strong>Bjorn Gray</strong>
+            to track golf a little easier.
+          </p>
+          <p>
+            I originally designed this to help my brother out, since he is on the high school golf team. But now it can be used by more people.
+          </p>
+          <p>
+          Feel free to send me a message with how I can improve: 10897623@uvu.edu
+          </p>
+        </div>
+
+    
+        <div class="contact-box">
+          <h3>Contact Me</h3>
+          <form class="contact-form">
+            <label>
+              Name:
+              <input type="text" name="name" placeholder="Your name" required>
+            </label>
+
+            <label>
+              Email:
+              <input type="email" name="email" placeholder="you@example.com" required>
+            </label>
+
+            <label>
+              Message:
+              <textarea name="message" placeholder="Write your message..." rows="4" required></textarea>
+            </label>
+
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- Log Visit-->
+<section data-section="log-visit" style="display:none">
+  <div class="floating-box visitor-section">
+    <h2>Visitor Registration</h2>
+
+
+    <div id="visitor-thankyou" style="display:none;">
+      <p>Thanks for logging your visit! Your information has been received.</p>
+    </div>
+
+    <!--Visitor form -->
+    <form id="myform" class="visitor-form" novalidate>
+      <div class="visitor-flex">
+
+        <!--First name-->
+        <div class="form-field">
+          <label for="first-name">First Name *</label>
+          <input type="text" id="first-name" name="first-name" placeholder="Enter your first name">
+          <div class="errorMsg"></div>
+        </div>
+
+        <!--Last name-->
+        <div class="form-field">
+          <label for="last-name">Last Name *</label>
+          <input type="text" id="last-name" name="last-name" placeholder="Enter your last name">
+          <div class="errorMsg"></div>
+        </div>
+
+        <!--Address-->
+        <div class="form-field">
+          <label for="address">Address *</label>
+          <input type="text" id="address" name="address" placeholder="Street address">
+          <div class="errorMsg"></div>
+        </div>
+
+        <!--city -->
+        <div class="form-field">
+          <label for="city">City *</label>
+          <input type="text" id="city" name="city" placeholder="City">
+          <div class="errorMsg"></div>
+        </div>
+
+        <!--State -->
+        <div class="form-field">
+          <label for="state">State (2-letter) *</label>
+          <input type="text" id="state" name="state" maxlength="2" placeholder="UT">
+          <div class="errorMsg"></div>
+        </div>
+
+        <!--Zip-->
+        <div class="form-field">
+          <label for="zip">Zip Code *</label>
+          <input type="text" id="zip" name="zip" placeholder="e.g. 84058">
+          <div class="errorMsg"></div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-field">
+          <label for="email">Email *</label>
+          <input type="text" id="email" name="email" placeholder="name@example.com">
+          <div class="errorMsg"></div>
+        </div>
+
+        <!--Phone-->
+        <div class="form-field">
+          <label for="phone">Phone *</label>
+          <input type="text" id="phone" name="phone" placeholder="10 digit phone">
+          <div class="errorMsg"></div>
+        </div>
+
+        <!--How did they find the page -->
+        <div class="form-field full-width">
+          <p><strong>How did you find my page? *</strong></p>
+
+          <label>
+            <input type="checkbox" name="how-found" value="google">
+            Google search
+          </label>
+
+          <label>
+            <input type="checkbox" name="how-found" value="friend">
+            Friend
+          </label>
+
+          <label>
+            <input type="checkbox" name="how-found" value="social">
+            Social media
+          </label>
+
+          <label>
+            <input type="checkbox" name="how-found" value="other">
+            Other (Please write where in the comments)
+          </label>
+
+          <div class="errorMsg" id="how-found-error"></div>
+        </div>
+
+        <!-- Comments-->
+        <div class="form-field full-width">
+          <label for="comment">Comments (optional)</label>
+          <textarea id="comment" name="comment" rows="4" placeholder="Anything else you want to share?"></textarea>
+        </div>
+
+        <!--Submit-->
+        <div class="form-field full-width">
+          <button type="submit" id="submitBtn" class="btn">Submit</button>
+        </div>
+
+      </div>
+    </form>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer">
+    © 2025 Golf Tracker by Bjorn Gray
+    <button id="theme-toggle" class="btn">Toggle Dark Mode</button>
+  </div>
+</footer>
+
+<script src="js/page.js"></script>
+<script src="js/validate.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

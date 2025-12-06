@@ -1,0 +1,644 @@
+/* November 7, 2025
+I fixed some organization things to try and clean this up a little bit. I also added a lot more comments for documentation.
+
+  Organization
+  - Global stuff
+  - Home and shared sections
+  - Pages
+  - Media Queries at the end
+*/
+
+
+/*
+December 4, 2025
+Even more changes:
+
+ - Created a universal .btn class to make things more organized
+ - Combined the two media queries into one
+ - Made the fonts universal/consistent (Arial, sans-serif)
+ - Fixed footer and dark mode button
+ - Changed font pt to px
+ - Added CSS for the visitor form log
+*/
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 5px;
+  padding-bottom: 30px;
+  z-index: 0; 
+}
+
+/* Background image is blurred behind everything*/
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0; 
+  width: 100%;
+  height: 100%;
+  background: url("../img/green-background.jpg") repeat fixed;
+  background-size: cover;
+  filter: blur(5px);
+  z-index: -1;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 30px;
+  max-width: 1000px;      
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* Generic text wrapper */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+  justify-content: center; 
+}
+
+/* Generic box*/
+.box {
+  flex: 1;
+  border-radius: 10px;
+  background-color: #eee;
+  text-align: center;
+}
+
+/* General things */
+
+a {
+  text-decoration: none;
+  color: #1176e9;
+}
+
+p {
+  background-color: white;
+  border-radius: 7px;
+  padding: 10px;
+}
+
+/* H2 is used on multiple pages for standardization */
+h2 {
+  display: inline-block;
+  color: #ffffff;
+  background-color: #1176e9;
+  text-shadow: 3px 3px 5px black;
+  border-radius: 5px;
+  padding: 2px 5px;
+  font-family: "Bebas Neue", sans-serif;
+  margin: 0.8em 0 0.25em;
+  font-size: 48px;
+}
+
+/* Hero picture */
+
+.flex-image {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+}
+
+.flex-text {
+  flex: 1;          
+  text-align: left;
+  color: #333;
+}
+
+.flex-text h1 {
+  font-size: 40px;
+  margin: 0 0 10px;
+  color: #ffffff;
+  background-color: #1176e9;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/* Header is also used across the pages */
+.header-text {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  font-size: 13px;
+  color: #ffffff;
+  background-color: #1176e9;
+  text-shadow: 3px 3px 10px black;
+  align-content: center;
+  justify-content: flex-start;
+}
+
+/* Footer layout is shared */
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 10px;
+  gap: 10px;
+}
+
+/* Floating panel for the background*/
+.floating-box {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 15px;
+  background-color: #808080;
+  border-radius: 10px;
+  box-shadow: 5px 5px 30px black;
+  z-index: 1;
+}
+
+/* centers the video */
+.video-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* buttons */
+
+
+.btn{
+  display: inline-block;
+  background-color: #222;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #444;
+}
+
+.btn.active {
+  background-color: #1176e9;
+}
+
+.button-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+/* Buttons inside the homepage area */
+.button-container .btn {
+  width: 100%;
+  text-align: center;
+}
+
+.log-form .btn,
+.contact-form .btn {
+  align-self: flex-start;
+}
+
+/* Buttons on the other pages */
+.log-form button,
+.course-search button,
+.contact-form button {
+  padding: 10px 16px;
+}
+
+.log-form button { margin-top: 10px; }
+
+/* Weather */
+
+.weather-container {
+  display: flex;           
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 5px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.weather-text {
+  font-family: Arial, sans-serif;
+  font-size: 26px;
+  padding: 10px;
+}
+
+/* Log a round page */
+
+.log-flex {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.log-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  margin-top: 10px;
+}
+
+.log-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #333;
+}
+
+.log-form input {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.log-form button:hover {
+  background: #444;
+}
+
+.log-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.log-image img {
+  max-width: 90%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px #222;
+}
+
+/* Find a course page*/
+
+.course-search {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.course-search input {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+
+.course-search button:hover {
+  background: #444;
+}
+
+.map-container {
+  margin-bottom: 20px;
+}
+
+.course-results {
+  background: #f4f4f4;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/*Contact info page */
+
+#contact {
+  display: block !important;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#contact h2 {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+.contact-flex {
+  display: flex;
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-box,
+.contact-box {
+  flex: 1;
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.about-box h3,
+.contact-box h3 {
+  margin-top: 5px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.contact-form button:hover {
+  background: #444;
+}
+
+/* Stats page*/
+
+#stats {
+  display: block !important;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.quick-stats {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.quick-stats p {
+  margin: 10px 0;
+  font-size: 26px;
+  text-align: center;
+}
+#stats h2 {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+#stats p {
+  text-align: center;
+}
+
+.stats-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: #f4f4f4;
+  padding: 15px;
+  border-radius: 7px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  flex: 1 1 150px;
+  max-width: 200px;
+}
+
+.stat-card h3 {
+  margin: 0 0 5px;
+  font-size: 16px;
+}
+
+.stat-card p {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.stats-chart {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.stats-chart-container {
+  background: #ffffff;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 12px;
+  height: 200px;
+  margin-top: 15px;
+}
+
+.bar {
+  background: #1176e9;
+  flex: 1;
+  max-width: 60px;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+}
+
+.bar span {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  color: #333;
+}
+
+/* Photo gallery page */
+
+#gallery {
+  display: block !important;
+  width: 100%;
+  text-align: center;
+}
+
+#gallery h2 {
+  display: block;
+  width: 100%;
+  text-align: center !important;
+}
+
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.gallery-item {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.gallery-item:hover { transform: scale(1.02); }
+
+.gallery-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-item figcaption {
+  text-align: center;
+  padding: 8px;
+  font-size: 14px;
+  color: #333;
+}
+/* Visitor Form*/
+.visitor-section {
+  margin-top: 20px;
+}
+
+.visitor-form {
+  margin-top: 10px;
+}
+
+.visitor-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 240px;
+}
+
+.form-field.full-width {
+  flex: 1 1 100%;
+}
+
+.form-field label,
+.form-field p {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.form-field input,
+.form-field textarea {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.errorMsg {
+  color: #ff4d4d;
+  font-size: 0.8rem;
+  min-height: 1em;
+  margin-top: 4px;
+}
+
+/* Validate CSS*/
+
+
+input.was-validated:invalid,
+textarea.was-validated:invalid {
+  border: 1px solid red;
+}
+
+input.was-validated:valid,
+textarea.was-validated:valid {
+  border: 1px solid #3da6ff; 
+}
+
+/* hide error messages default*/
+.form-field .errorMsg {
+  display: none;
+  font-size: 0.8rem;
+}
+
+
+input.was-validated:invalid ~ .errorMsg,
+textarea.was-validated:invalid ~ .errorMsg {
+  display: block;
+}
+/* Media queries */
+
+/* Phone */
+@media (max-width: 600px) {
+  /* Buttons stack */
+  .button-container { grid-template-columns: 1fr; }
+
+  .button-container .btn,
+  .log-form .btn,
+  .contact-form .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .log-flex { flex-direction: column; align-items: stretch; }
+  .contact-flex { flex-direction: column; }
+
+  .chart-bars { gap: 8px; }
+  .bar { max-width: 40px; }
+
+  .flex-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 12px;
+    margin: 15px auto;
+  }
+
+  .flex-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .flex-text { width: 100%; }
+
+  .flex-text h1,
+  .flex-text h2 {
+    font-size: 28px;
+  }
+
+  .header-text { text-align: center; }
+
+  .gallery-item img { height: 150px; }
+
+  html, body { overflow-x: hidden; }
+}
+
